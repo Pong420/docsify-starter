@@ -1,0 +1,12 @@
+{
+  "name": "docsify-starter",
+  "version": "1.0.0",
+  "license": "MIT",
+  "scripts": {
+    "start": "",
+    "dev": "yarn docsify serve docs"
+  },
+  "devDependencies": {
+    "docsify-cli": "^4.4.2"
+  }
+}
