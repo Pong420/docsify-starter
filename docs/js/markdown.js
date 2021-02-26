@@ -10,8 +10,6 @@
 
   var regex = commentRegex(`highlight-line`);
 
-  console.log(regex);
-
   /**
    * @param {string[]} strArr
    */
