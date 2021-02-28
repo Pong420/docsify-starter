@@ -173,3 +173,22 @@ pre.with-file:after {
   background: var(--lineHightLight);
   font-size: 12px;
 }
+
+/* html */
+.token.tag {
+  color: var(--highlightColor);
+}
+
+.token.attr-name {
+  color: var(--textColor);
+}
+
+/* css */
+.token.selector {
+  color: var(--highlightColor);
+}
+
+.token.rule,
+.token.atrule {
+  color: var(--textColor);
+}

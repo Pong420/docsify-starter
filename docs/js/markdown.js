@@ -1,47 +1,53 @@
-(() => {
+(function () {
   /**
    * @param {string} key
    */
-  var commentRegex = (key) =>
-    new RegExp(
+  function commentRegex(key) {
+    return new RegExp(
       `/\\* ${key} \\*/|\\/\\/\\s+${key}.*$|<!--(\\s+)?${key}(\\s+)?-->`,
       'gm'
     );
+  }
 
   var regex = commentRegex(`highlight-line`);
 
   /**
    * @param {string[]} strArr
    */
-  var parseMetadata = (strArr) =>
-    strArr.reduce(
+  function parseMetadata(strArr) {
+    return strArr.reduce(
       /**
        * @param {Record<string, string>} metadata
        * @param {string} line
        * @param {number} index
        */
-      (metadata, str) => {
+      function (metadata, str) {
         var [key, value] = str.split('=');
-        return { ...metadata, [key]: value };
+        return {
+          ...metadata,
+          [key]: typeof value === 'undefined' ? 'true' : value
+        };
       },
       {}
     );
+  }
 
   /**
    * @param {string} code
    */
-  var getLinesHightLight = (code) =>
-    code.split('\n').reduce(
+  function getLinesHightLight(code) {
+    return code.split('\n').reduce(
       /**
        * @param {(number | string)[]} lineNumbers
        * @param {string} line
        * @param {number} index
        */
-      (lineNumbers, line, index) => {
+      function (lineNumbers, line, index) {
         return !!line.match(regex) ? [...lineNumbers, index + 1] : lineNumbers;
       },
       []
     );
+  }
 
   /**
    * @param {string} code
@@ -51,6 +57,7 @@
   function code(code, _lang) {
     var [lang, ...rest] = _lang.split(' ');
     var metadata = parseMetadata(rest);
+
     var file = metadata.file;
     var highlight = metadata.highlight || '';
 
@@ -102,6 +109,6 @@
           Prism.highlightAll();
         }
       );
-    },
+    }
   ];
 })();
