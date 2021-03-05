@@ -88,6 +88,10 @@ ul.app-sub-sidebar li {
   margin: 0;
 }
 
+.markdown-section h4 {
+  margin-bottom: 0;
+}
+
 .markdown-section pre {
   margin: 0;
 }
@@ -174,6 +178,11 @@ pre.with-file:after {
   font-size: 12px;
 }
 
+/* tip */
+.markdown-section p.tip code {
+  background: none;
+}
+
 /* html */
 .token.tag {
   color: var(--highlightColor);
@@ -191,4 +200,13 @@ pre.with-file:after {
 .token.rule,
 .token.atrule {
   color: var(--textColor);
+}
+
+/* bash */
+.language-bash .token.shebang {
+  color: #858585;
+}
+
+.language-bash .token.variable {
+  color: var(--accent);
 }
